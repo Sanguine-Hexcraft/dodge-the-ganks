@@ -1,10 +1,11 @@
 [gd_scene format=4 uid="uid://mch0j3hc03pq"]
 
-[ext_resource type="Script" uid="uid://dnyvt1blsetvn" path="res://main/Main.cs" id="1_xwkvk"]
+[ext_resource type="Script" path="res://main/main.gd" id="1_xwkvk"]
 [ext_resource type="PackedScene" uid="uid://c2fcy0gidj45h" path="res://mob/mob.tscn" id="2_c651c"]
 [ext_resource type="PackedScene" uid="uid://d2n7pf48o6hrl" path="res://player/player.tscn" id="3_3wy1v"]
 [ext_resource type="PackedScene" uid="uid://mw0evi5e5m7c" path="res://hud/hud.tscn" id="4_c651c"]
 [ext_resource type="AudioStream" uid="uid://b3v67yrb3lr52" path="res://art/ghoulatt.wav" id="5_3wy1v"]
+[ext_resource type="PackedScene" path="res://touch/touch_controls.tscn" id="6_touch"]
 
 [sub_resource type="Curve2D" id="Curve2D_cv6ru"]
 _data = {
@@ -31,7 +32,7 @@ loop = true
 
 [node name="Main" type="Node" unique_id=157856367]
 script = ExtResource("1_xwkvk")
-MobScene = ExtResource("2_c651c")
+mob_scene = ExtResource("2_c651c")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=671673394]
 anchors_preset = 15
@@ -63,14 +64,16 @@ rotation = 0.0020876795
 
 [node name="HUD" parent="." unique_id=1078844655 instance=ExtResource("4_c651c")]
 
+[node name="TouchControls" parent="." instance=ExtResource("6_touch")]
+
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=733573117]
 stream = SubResource("AudioStreamOggVorbis_kfbq2")
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="." unique_id=569602993]
 stream = ExtResource("5_3wy1v")
 
-[connection signal="Hit" from="Player" to="." method="GameOver"]
-[connection signal="timeout" from="MobTimer" to="." method="OnMobTimerTimeout"]
-[connection signal="timeout" from="ScoreTimer" to="." method="OnScoreTimerTimeout"]
-[connection signal="timeout" from="StartTimer" to="." method="OnStartTimerTimeout"]
-[connection signal="StartGame" from="HUD" to="." method="NewGame"]
+[connection signal="hit" from="Player" to="." method="game_over"]
+[connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]

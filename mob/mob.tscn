@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c2fcy0gidj45h"]
 
-[ext_resource type="Script" uid="uid://d0k2p7v8j6nta" path="res://mob/Mob.cs" id="1_ub8vd"]
+[ext_resource type="Script" path="res://mob/mob.gd" id="1_ub8vd"]
 [ext_resource type="Texture2D" uid="uid://d1rp15g64mjee" path="res://art/enemyMarci_1.png" id="1_vcc1q"]
 [ext_resource type="Texture2D" uid="uid://fg44bkm405dg" path="res://art/enemyMarci_2.png" id="2_ub8vd"]
 [ext_resource type="Texture2D" uid="uid://d4hqvbu5u2rc" path="res://art/enemyNP_1.png" id="3_4wq73"]
@@ -48,7 +48,7 @@ animations = [{
 radius = 23.0
 height = 66.0
 
-[node name="Mob" type="RigidBody2D" unique_id=73565390]
+[node name="Mob" type="RigidBody2D" unique_id=73565390 groups=["mobs"]]
 collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource("1_ub8vd")
@@ -63,4 +63,4 @@ shape = SubResource("CapsuleShape2D_eg3lc")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1855660469]
 
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnVisibleOnScreenNotifier2DScreenExited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

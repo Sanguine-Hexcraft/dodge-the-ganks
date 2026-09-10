@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d2n7pf48o6hrl"]
 
-[ext_resource type="Script" uid="uid://b8upqluq0yyxh" path="res://player/Player.cs" id="1_g1dw6"]
+[ext_resource type="Script" path="res://player/player.gd" id="1_g1dw6"]
 [ext_resource type="Texture2D" uid="uid://c62iv4s5kv2n0" path="res://art/playerDrow_walk1.png" id="1_rkbax"]
 [ext_resource type="Texture2D" uid="uid://bls2j8c2c1onj" path="res://art/playerDrow_walk2.png" id="2_g1dw6"]
 
@@ -44,4 +44,4 @@ animation = &"up"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=489264662]
 shape = SubResource("CapsuleShape2D_dajoc")
 
-[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

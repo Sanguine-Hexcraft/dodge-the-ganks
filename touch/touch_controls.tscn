@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://touch/touch_controls.gd" id="1_touch"]
+[ext_resource type="Script" path="res://touch/virtual_joystick.gd" id="2_stick"]
+
+[node name="TouchControls" type="CanvasLayer"]
+layer = 2
+visible = false
+script = ExtResource("1_touch")
+
+[node name="Joystick" type="Control" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -204.0
+offset_right = 204.0
+offset_bottom = -24.0
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("2_stick")

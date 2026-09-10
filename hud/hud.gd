@@ -1,0 +1,37 @@
+extends CanvasLayer
+
+signal start_game
+
+
+func show_message(text: String) -> void:
+	var message: Label = $Message
+	message.text = text
+	message.show()
+
+	$MessageTimer.start()
+
+
+func show_game_over() -> void:
+	show_message("Game Over")
+
+	await $MessageTimer.timeout
+
+	var message: Label = $Message
+	message.text = "Dodge the Ganks!"
+	message.show()
+
+	await get_tree().create_timer(1.0).timeout
+	$StartButton.show()
+
+
+func update_score(score: int) -> void:
+	$ScoreLabel.text = str(score)
+
+
+func _on_start_button_pressed() -> void:
+	$StartButton.hide()
+	start_game.emit()
+
+
+func _on_message_timer_timeout() -> void:
+	$Message.hide()
